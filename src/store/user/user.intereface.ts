@@ -17,6 +17,7 @@ export interface IInitialState{
 export interface IEmailPassword{
     email: string
     password: string
+    name?: string
 }
 
 export interface IAuthResponse extends ITokens{
