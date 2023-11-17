@@ -8,7 +8,7 @@ export class AuthService{
 
     static async login(data: IEmailPassword, type: 'login' | 'register'){
         const response = await instance.post<IAuthResponse>(
-            process.env.SERVER_URL + '/auth/'+type,
+            '/auth/' + type,
             {...data}
         )
 
