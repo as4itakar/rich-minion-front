@@ -1,5 +1,6 @@
 import { instance } from "@/api/api.interceptor";
-import { ICategory } from "@/models/category.interface";
+import { ICategoryData } from "@/models/request/category-data.interface";
+import { ICategory } from "@/models/response/category.interface";
 
 export class CategoryService{
 
@@ -15,14 +16,14 @@ export class CategoryService{
          )
     }
 
-    static async create(data: Pick<ICategory, 'name' | 'image'>){
+    static async create(data: ICategoryData){
         return instance.post<ICategory>(
             '/category',
             {...data}
         )
     }
 
-    static async update(id: number | string, data: Pick<ICategory, 'name' | 'image'>){
+    static async update(id: number | string, data: ICategoryData){
         return instance.put<ICategory>(
             '/category/' + id,
             {...data}

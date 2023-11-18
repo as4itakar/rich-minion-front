@@ -1,4 +1,4 @@
-import { IUser } from "@/models/user.interface"
+import { IUser } from "@/models/response/user.interface"
 
 export interface IUserState{
     email: string
