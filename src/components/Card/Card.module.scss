@@ -1,0 +1,45 @@
+.cardContainer{
+    width: 50%;
+    height: 500px;
+    margin: 40px auto;
+    display: flex;
+    border-radius: 30px;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 8px 23px 1px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 8px 23px 1px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 8px 23px 1px rgba(34, 60, 80, 0.2);
+}
+
+.area{
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.right{
+    padding: 100px;
+    text-align: center;
+
+    h1{
+        margin-bottom: 20px;
+    }
+
+    p{
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+}
+
+.button{
+    padding: 10px 20px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #000;
+        color:#fafafa
+    }
+}

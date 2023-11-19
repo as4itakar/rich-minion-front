@@ -1,0 +1,39 @@
+.resultContainer{
+    width: 40%;
+    border-radius: 20px;
+    padding: 20px;
+    align-self: flex-start;
+    -webkit-box-shadow: 0px 8px 23px 1px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 8px 23px 1px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 8px 23px 1px rgba(34, 60, 80, 0.2);
+}
+
+.button{
+    width: 100%;
+    padding: 10px 0;
+    background-color: #fafafa;
+    border-radius: 10px;
+    border: 2px solid #000;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #000;
+        color: #fafafa;
+    }
+}
+
+.resultInfo{
+    margin-bottom: 10px;
+}
+
+.sale{
+    color: #ff3300;
+    font-weight: bold;
+}
+
+.cost{
+    color: #006933;
+    font-weight: bold;
+}

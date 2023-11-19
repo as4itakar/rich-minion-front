@@ -1,3 +1,4 @@
+import AuthProvider from '@/providers/auth-provider/AuthProvider'
 import { persistor, store } from '@/store/store'
 import '@/styles/globals.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -19,7 +20,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Component {...pageProps} />
+          <AuthProvider>
+            <Component {...pageProps} />
+          </AuthProvider>
         </PersistGate>
       </Provider>
     </QueryClientProvider>

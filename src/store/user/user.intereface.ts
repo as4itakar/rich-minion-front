@@ -1,7 +1,8 @@
+import { IRole } from "@/models/response/role.interface"
 import { IUser } from "@/models/response/user.interface"
 
 export interface IUserState{
-    email: string
+    email: string,
 }
 
 export interface ITokens{
