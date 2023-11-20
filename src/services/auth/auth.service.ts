@@ -23,9 +23,6 @@ export class AuthService{
         const response = await axios.post<string, {data: IAuthResponse}>(
             process.env.SERVER_URL + '/auth/login/access-token',
             {refreshToken},
-            {
-                headers: getContentType()
-            }
         )
 
         if (response.data.accessToken) saveToStorage(response.data)

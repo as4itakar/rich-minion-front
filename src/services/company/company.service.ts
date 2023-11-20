@@ -1,6 +1,6 @@
 import { instance } from "@/api/api.interceptor"
-import { ICompanyData } from "@/models/request/company-data.interface"
-import { ICompany } from "@/models/response/company.interface"
+import { ICompanyData } from "@/services/company/company-data.interface"
+import { ICompany } from "@/models/company.interface"
 
 export class CompanyService{
 

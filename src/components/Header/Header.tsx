@@ -2,8 +2,12 @@ import styles from './Header.module.scss'
 import { FiShoppingBag } from 'react-icons/fi'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useActions } from '@/hooks/useActions'
 
 function Header(){
+
+    const {logout} = useActions()
+
     return (
         <header className={styles.header}>
             <section className={styles.headerContainer}>
@@ -15,6 +19,7 @@ function Header(){
                         <p className={styles.link}>Products</p>
                    </Link>
                     <p className={styles.link}>Profile</p>
+                    <button onClick={() => logout()}>Выйти</button>
                 </nav>
                 <article className={styles.logoContainer}>
                         <h1>RICH</h1>

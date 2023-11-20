@@ -1,6 +1,6 @@
 import { instance } from "@/api/api.interceptor"
-import { IReviewData } from "@/models/request/review-data.interface"
-import { IReview } from "@/models/response/review.interface"
+import { IReviewData } from "@/services/review/review-data.interface"
+import { IReview } from "@/models/review.interface"
 
 export class ReviewService{
 

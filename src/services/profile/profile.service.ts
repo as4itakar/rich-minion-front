@@ -1,6 +1,6 @@
 import { instance } from "@/api/api.interceptor"
-import { IProfileData } from "@/models/request/profile-data.interface"
-import { IProfile } from "@/models/response/profile.interface"
+import { IProfileData } from "@/services/profile/profile-data.interface"
+import { IProfile } from "@/models/profile.interface"
 
 export class ProfileService{
 

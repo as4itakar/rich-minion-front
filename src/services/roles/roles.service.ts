@@ -1,6 +1,6 @@
 import { instance } from "@/api/api.interceptor"
-import { IRoleData } from "@/models/request/role-data.interface"
-import { IRole } from "@/models/response/role.interface"
+import { IRoleData } from "@/services/roles/role-data.interface"
+import { IRole } from "@/models/role.interface"
 
 export class UsersService{
 

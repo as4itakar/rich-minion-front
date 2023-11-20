@@ -1,3 +1,4 @@
+import Header from "@/components/Header/Header";
 import { useActions } from "@/hooks/useActions";
 import { useAuth } from "@/hooks/useAuth";
 import { getAccessToken, getRefreshToken } from "@/services/auth/auth.helper";
@@ -21,7 +22,10 @@ const AuthProvider: FC<PropsWithChildren> = ({children}) => {
         if(!refreshToken && user) logout()
     }, [pathname])
 
-    return <>{children}</>
+    return <>
+        <Header/>
+        {children}
+    </>
 }
 
 export default AuthProvider

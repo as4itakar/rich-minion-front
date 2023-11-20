@@ -1,6 +1,6 @@
 import { instance } from "@/api/api.interceptor";
-import { ICategoryData } from "@/models/request/category-data.interface";
-import { ICategory } from "@/models/response/category.interface";
+import { ICategoryData } from "@/services/category/category-data.interface";
+import { ICategory } from "@/models/category.interface";
 
 export class CategoryService{
 

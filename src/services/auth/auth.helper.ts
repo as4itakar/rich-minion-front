@@ -1,34 +1,34 @@
 import { ITokens } from '@/store/user/user.intereface'
-import { cookies } from 'next/headers'
+import Cookies from 'js-cookie'
 
 export const getAccessToken = () => {
-    const accessToken = cookies().get('accessToken')
+    const accessToken = Cookies.get('accessToken')
     return accessToken || null
 }
 
 export const getRefreshToken = () => {
-    const refreshToken = cookies().get('refreshToken')
+    const refreshToken = Cookies.get('refreshToken')
     return refreshToken || null
 }
 
 export const getUserFromStorage = () => {
-    const user = JSON.parse(localStorage.getItem('user') || '{}')
-    return user
+    const user = typeof window !== "undefined" && localStorage.getItem('user')
+    return JSON.parse(user || '{}')
 }
 
 export const saveTokensStorage = (data: ITokens) => {
-    cookies().set('accessToken', data.accessToken)
-    cookies().set('refreshToken', data.refreshToken)
+    Cookies.set('accessToken', data.accessToken)
+    Cookies.set('refreshToken', data.refreshToken)
 }
 
 export const removeToken = () => {
-    cookies().delete('accessToken')
-    cookies().delete('refreshToken')
-    localStorage.removeItem('user')
+    Cookies.remove('accessToken')
+    Cookies.remove('refreshToken')
+    typeof window !== "undefined" && localStorage.removeItem('user')
 }
 
 export const saveToStorage = (data: any) => {
     const {user, accessToken, refreshToken} = data
-    saveToStorage({accessToken, refreshToken})
-    localStorage.setItem('user', JSON.stringify(user))
+    saveTokensStorage({accessToken, refreshToken})
+    typeof window !== "undefined" && localStorage.setItem('user', JSON.stringify(user))
 }

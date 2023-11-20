@@ -1,7 +1,7 @@
 import { instance } from "@/api/api.interceptor"
-import { IProductData } from "@/models/request/product-data.interface"
-import { IGetAllProductData } from "@/models/request/products-filter-data.interface"
-import { IProduct } from "@/models/response/product.interface"
+import { IProductData } from "@/services/products/product-data.interface"
+import { IGetAllProductData } from "@/services/products/products-filter-data.interface"
+import { IProduct } from "@/models/product.interface"
 
 export class ProductsService{
 

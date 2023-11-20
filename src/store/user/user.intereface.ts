@@ -1,5 +1,5 @@
-import { IRole } from "@/models/response/role.interface"
-import { IUser } from "@/models/response/user.interface"
+import { IRole } from "@/models/role.interface"
+import { IUser } from "@/models/user.interface"
 
 export interface IUserState{
     email: string,

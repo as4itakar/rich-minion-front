@@ -1,5 +1,5 @@
 import { instance } from "@/api/api.interceptor"
-import { IUser } from "@/models/response/user.interface"
+import { IUser } from "@/models/user.interface"
 
 export class UsersService{
 
