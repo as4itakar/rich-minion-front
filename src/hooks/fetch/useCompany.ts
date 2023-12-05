@@ -13,8 +13,6 @@ export const useCompany = () => {
         select: ({data}) => data
     })
 
-    console.log(data)
-
     useError(isError, error?.message)
 
     return {company: data}

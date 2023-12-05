@@ -19,9 +19,9 @@ export class AuthService{
 
     static async getNewTokens(){
         const refreshToken = getRefreshToken()
-
+        
         const response = await axios.post<string, {data: IAuthResponse}>(
-            process.env.SERVER_URL + '/auth/login/access-token',
+            process.env.SERVER_URL + 'auth/login/access-token',
             {refreshToken},
         )
 
