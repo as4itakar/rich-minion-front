@@ -2,8 +2,8 @@ import { OrderService } from "@/services/orders/order.service"
 import { errorToast, successToast } from "@/utils/toasterActions"
 import { useMutation } from "@tanstack/react-query"
 import { useCart } from "../redux/useCart"
-import { EnumOrderStatus } from "@/models/order.interface"
 import { useActions } from "../redux/useActions"
+import { EnumOrderStatus } from "@/models/enums/OrderStatus"
 
 export const useMutateOrder = () => {
 
@@ -30,7 +30,7 @@ export const useMutateOrder = () => {
             productId: item.product.id
         }))
 
-        mutateAsync({status: EnumOrderStatus.PAYED, items: orderItems})
+        mutateAsync({status: EnumOrderStatus.PENDING, items: orderItems})
     }
 
     return {createOrder}

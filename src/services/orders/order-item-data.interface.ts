@@ -2,7 +2,7 @@ import { EnumOrderStatus } from "@/models/enums/OrderStatus"
 
 export interface IOrderData{
     status: EnumOrderStatus
-    items: IOrderItemData   
+    items: IOrderItemData[]   
 }
 
 export interface IOrderItemData{
