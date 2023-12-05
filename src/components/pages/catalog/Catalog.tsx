@@ -1,9 +1,8 @@
-import styles from './Catalog.module.scss'
-import { EnumProductSort } from '@/services/products/products-filter-data.interface'
 import { useAllProducts } from '@/hooks/fetch/useAllProducts'
 import Products from '../../ui/products/Products'
 import Sort from '@/components/ui/sort/Sort'
 import { useParams } from '@/hooks/useParams'
+import { EnumProductSort } from '@/models/enums/ProductSort'
 
 
 const Catalog = () => {
