@@ -4,7 +4,7 @@ import { useError } from "../useStatus"
 
 export const useRandomProducts = () => {
     const {data, error, isError} = useQuery({
-        queryKey: ['get orders'],
+        queryKey: ['get random orders'],
         queryFn: () => ProductsService.getRandom(),
         select: ({data}) => data
     })
