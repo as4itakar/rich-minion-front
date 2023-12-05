@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useAuth } from "./useAuth"
+import { useAuth } from "./redux/useAuth"
 import { useRouter } from "next/router"
 
 export const useAuthRedirect = () => {

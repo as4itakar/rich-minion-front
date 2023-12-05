@@ -3,5 +3,15 @@ export interface IProduct{
     name: string, 
     description: string,
     price: number,
-    images: string[]
+    images: string[],
+    categoryId: number
+}
+
+export interface IQueryProducts{
+    data: IStaticProducts
+}
+
+export interface IStaticProducts{
+    products: IProduct[]
+    length: number
 }

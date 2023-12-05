@@ -1,0 +1,43 @@
+.goodContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px;
+    border-top: 1px solid lightgray;
+}
+
+.infoContainer{
+    width:55%;
+    height: 100%;
+
+}
+
+.imageContainer{
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.productInfo{
+    margin-bottom: 10px;
+}
+
+.brandInfo{
+    color: lightgray;
+}
+
+.costContainer{
+    width: 20%;
+    height: 100%;
+}
+
+.icon{
+    cursor: pointer;
+    transition: .1s ease all;
+
+    &:hover{
+        transform: scale(105%, 105%);
+    }
+}
+
+

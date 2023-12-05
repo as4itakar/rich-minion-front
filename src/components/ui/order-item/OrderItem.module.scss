@@ -1,0 +1,21 @@
+.orderItemContainer{
+    display: flex;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-bottom: 2px solid lightgray;
+}
+
+.imageContainer{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.infoContainer{
+    padding: 5px;
+    font-size: 20px;
+    color: #000;
+    list-style: none;
+}

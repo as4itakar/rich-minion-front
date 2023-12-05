@@ -1,4 +1,5 @@
 export interface IReviewData{
     rating: number,
-    text: string
+    text: string,
+    productId: number
 }

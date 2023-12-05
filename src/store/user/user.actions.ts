@@ -10,8 +10,8 @@ export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
         try {
             const response = await AuthService.login(data, 'register')
             return response
-        }catch (error){
-            return thunkApi.rejectWithValue(error)
+        }catch (error: any){
+            return thunkApi.rejectWithValue(error.message)
         }
     }
 )

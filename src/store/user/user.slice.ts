@@ -5,7 +5,8 @@ import { checkAuth, login, logout, register } from "./user.actions";
 
 const initialState: IInitialState = {
     user: getUserFromStorage(),
-    isLoading: false
+    isLoading: false,
+    isError: false
 }
 
 export const userSlice = createSlice({
@@ -20,10 +21,12 @@ export const userSlice = createSlice({
             .addCase(register.fulfilled, (state, {payload}) => {
             state.isLoading = false
             state.user = payload.user
+            state.isError = false
         })
             .addCase(register.rejected, (state, {payload}) => {
             state.isLoading = false
             state.user = null
+            state.isError = true
         })
             .addCase(login.pending, (state, {payload}) => {
             state.isLoading = true
@@ -31,10 +34,12 @@ export const userSlice = createSlice({
             .addCase(login.fulfilled, (state, {payload}) => {
             state.isLoading = false
             state.user = payload.user
+            state.isError = false
         })
             .addCase(login.rejected, (state, {payload}) => {
             state.isLoading = false
             state.user = null
+            state.isError = true
         })
             .addCase(logout.fulfilled, (state, {payload}) => {
             state.isLoading = false

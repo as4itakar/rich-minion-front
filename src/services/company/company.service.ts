@@ -1,26 +1,47 @@
 import { instance } from "@/api/api.interceptor"
-import { ICompanyData } from "@/services/company/company-data.interface"
 import { ICompany } from "@/models/company.interface"
+import { errorCatch } from "@/api/api.helper"
+import { errorToast, successToast } from "@/utils/toasterActions"
 
 export class CompanyService{
 
-    static async getOne(){
+    static getOne(){
        return instance.get<ICompany>(
             '/company'
         )
     }
 
-    static async create(data: ICompanyData){
-        return instance.post<ICompany>(
-            '/category',
-            {...data}
+    static getAll(){
+        return instance.get<ICompany[]>(
+             '/company/all'
          )
+     }
+
+    static async create(data: FormData){
+        try{
+            await instance<ICompany>({
+                method:'post',
+                url: '/company',
+                headers: { "Content-Type": "multipart/form-data" },
+                data
+            })
+
+            successToast('Компания успешно создана!')
+        }catch(error){
+            errorToast(errorCatch(error))
+        }
     }
 
-    static async update(data: any){
+    static update(data: any){
         return instance.put<ICompany>(
-            '/category',
-            {...data}
+            '/company',
+            {...data},
         )
     }
+
+    static getById(id: string | number){
+        return instance.get<ICompany>(
+             '/company/one/' + id
+         )
+     }
 }

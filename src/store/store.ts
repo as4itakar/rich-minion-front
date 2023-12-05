@@ -1,4 +1,4 @@
-import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
     FLUSH,
     PAUSE,
@@ -9,15 +9,17 @@ import {
 } from 'redux-persist'
 import storage from "redux-persist/lib/storage";
 import { userSlice } from "./user/user.slice";
+import { cartSlice } from "./cart/cart.slice";
 
 const persistConfig = {
-    key: 'rich-mminion',
+    key: 'rich-minion',
     storage,
-    whitelist: ['cart']
+    blackList: ['user']
 }
 
 const rootReducer = combineReducers({
-    user: userSlice.reducer
+    user: userSlice.reducer,
+    cart: cartSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig,

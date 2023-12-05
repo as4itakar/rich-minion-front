@@ -1,13 +1,8 @@
-export enum EnumProductSort{
-    HIGH_PRICE = 'high-price',
-    LOW_PRICE = 'low-price',
-    NEWEST = 'newest',
-    OLDEST = 'oldest'
-}
+import { EnumProductSort } from "@/models/enums/ProductSort"
 
 export interface IGetAllProductData{
-    sort?: EnumProductSort
-    searchTerm?: string
-    page?: string | number
-    perPage?: string | number
+    sort?: EnumProductSort 
+    searchTerm?: string 
+    page?: string 
+    perPage?: string 
 }

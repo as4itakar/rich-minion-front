@@ -1,7 +1,7 @@
 export interface IProfileData{
     name: string,
-    phone?: string,
-    city?: string,
-    address?: string,
-    image?: string
+    phone: string,
+    city: string,
+    address: string,
+    image: File[]
 }

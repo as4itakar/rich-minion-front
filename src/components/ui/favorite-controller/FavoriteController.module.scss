@@ -1,0 +1,10 @@
+.icon{
+    color: red;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: .5s ease all;
+
+    &:hover{
+        transform: scale(105%, 105%);
+    }
+}

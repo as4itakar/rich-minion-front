@@ -1,0 +1,28 @@
+.productInfo{
+    display: flex;
+    margin: 0 auto;
+}
+
+.actionsContainer{
+    display: flex;
+    align-items: center;
+}
+
+.reviewList{
+    margin-top: 40px;
+}
+
+.reviewWrapper{
+    border-bottom: 2px solid lightgray;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    h5{
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    p{
+        font-size: 18px;
+    }
+}
+

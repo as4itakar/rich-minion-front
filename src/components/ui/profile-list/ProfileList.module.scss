@@ -1,0 +1,21 @@
+.infoWrapper{
+    width: 100%;
+    display: flex;
+    padding: 15px 40px;
+}
+
+.nameContainer{
+    flex: 1;
+    font-size: 25px;
+}
+
+.infoList{
+    flex: 1;
+    list-style: none;
+    color: lightgray;
+
+    li{
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+}

@@ -1,8 +1,9 @@
-import { IRole } from "@/models/role.interface"
 import { IUser } from "@/models/user.interface"
 
 export interface IUserState{
+    id: number,
     email: string,
+    roles: Array<string>
 }
 
 export interface ITokens{
@@ -12,7 +13,8 @@ export interface ITokens{
 
 export interface IInitialState{
     user: IUserState | null
-    isLoading: boolean
+    isLoading: boolean,
+    isError: boolean
 }
 
 export interface IEmailPassword{

@@ -1,0 +1,15 @@
+.linkContainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    flex: 1
+}
+
+.link{
+    padding: 5px;
+    border-radius: 5px;
+    transition: .5s ease all;
+    cursor: pointer;
+    font-weight: bold;
+}

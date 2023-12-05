@@ -1,0 +1,24 @@
+.blackButton{
+    padding: 10px 50px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    background-color: #fafafa;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .5s ease all;
+
+    &:hover{
+        background-color: #000;
+        color: #fafafa;
+    }
+}
+
+.greenButton{
+    background-color: greenyellow;
+    color: #fafafa;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}

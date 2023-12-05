@@ -1,0 +1,22 @@
+.footerContainer{
+    height: 200px;
+    padding: 20px 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid #000;
+}
+
+.infoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.icon{
+    margin: 0 5px 0 10px;
+}
+

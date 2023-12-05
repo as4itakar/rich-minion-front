@@ -11,7 +11,7 @@ export class CategoryService{
     }
 
     static async getById(id: string | number){
-        return instance.get<ICategory[]>(
+        return instance.get<ICategory>(
             '/category/' + id
          )
     }
