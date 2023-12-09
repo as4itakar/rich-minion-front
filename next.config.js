@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    SERVER_URL: process.env.SERVER_URL
+    SERVER_URL: process.env.SERVER_URL,
+    LOCAL_URL: process.env.LOCAL_URL
   },
   images: {
     remotePatterns: [
@@ -10,12 +11,6 @@ const nextConfig = {
         protocol: "https",
         hostname: "**",
       },
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '3000',
-        pathname: '/images/*'
-      }
     ],
   },
 }
