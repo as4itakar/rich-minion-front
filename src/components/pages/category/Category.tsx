@@ -12,7 +12,7 @@ const Category: FC<{category: ICategory}> = ({category}) => {
 
     const {search, sort, page} = useParams()
 
-    const {data} = useCategoryProducts({
+    const {data, isLoading} = useCategoryProducts({
         searchTerm: search,
         sort: sort as EnumProductSort,
         page,
@@ -23,10 +23,7 @@ const Category: FC<{category: ICategory}> = ({category}) => {
         <div className={styles.categoryContainer}>
             <h1>{category.name}</h1>
             <Sort pages={data ? data?.length: 1}/>
-            {
-                data?.products && data.products.length > 0 &&
-                <Products products={data?.products}/>
-            }
+            <Products isLoading={isLoading} products={data?.products}/>         
         </div>
     )
 }

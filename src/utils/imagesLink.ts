@@ -1,4 +1,4 @@
-const server_url = process.env.SERVER_URL || 'http://localhost:5000/'
+const server_url = process.env.SERVER_URL || 'https://rich-minion-server.onrender.com/'
 const local_url = process.env.LOCAL_URL || 'http://localhost:3000/'
 
 export const imagesLink = {

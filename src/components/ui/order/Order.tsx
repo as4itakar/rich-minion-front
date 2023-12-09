@@ -13,7 +13,7 @@ const Order: FC<IOrderUI> = ({order}) => {
             <h1>Статус: {order.status}</h1>
             {
                 order.items && order.items.length > 0 &&
-                order.items.map( item => <OrderItem item={item}/>)
+                order.items.map( item => <OrderItem key={item.id} item={item}/>)
             }
         </div>
     )

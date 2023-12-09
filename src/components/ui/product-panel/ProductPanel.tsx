@@ -7,6 +7,7 @@ import Button from '../button/Button'
 import FavoriteController from '../favorite-controller/FavoriteController'
 import StarRating from '../star-rating/StarRating'
 import { useAuth } from '@/hooks/redux/useAuth'
+import { currencyFormat } from '@/utils/currencyFormat'
 
 interface IProductPanel{
     product: IProduct,
@@ -26,8 +27,8 @@ const ProductPanel:FC<IProductPanel> = ({product, rating}) => {
                 </div>
                 <div className={styles.infoContainer}>
                     <div className={styles.nameContainer}>
-                        <h1>{product?.name}</h1>
-                        <h5>{product?.price} руб.</h5>
+                        <h1>{product.name}</h1>
+                        <h5>{currencyFormat(product.price)}</h5>
                     </div>
                     <p>{product?.description}</p>
                     <div className={styles.actionsContainer}>

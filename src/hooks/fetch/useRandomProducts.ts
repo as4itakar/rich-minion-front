@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useError } from "../useStatus"
 
 export const useRandomProducts = () => {
-    const {data, error, isError} = useQuery({
+    const {data, error, isError, isLoading} = useQuery({
         queryKey: ['get random orders'],
         queryFn: () => ProductsService.getRandom(),
         select: ({data}) => data
@@ -11,5 +11,5 @@ export const useRandomProducts = () => {
 
     useError(isError, error?.message)
 
-    return {products: data}
+    return {products: data, isLoading}
 }

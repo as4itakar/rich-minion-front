@@ -7,7 +7,7 @@ export const useCompany = () => {
 
     const {user} = useAuth()
 
-    const { data, error, isError } = useQuery({
+    const { data, error, isError, isLoading } = useQuery({
         queryKey: ['get personal company', user?.id],
         queryFn: () => CompanyService.getOne(),
         select: ({data}) => data
@@ -15,5 +15,5 @@ export const useCompany = () => {
 
     useError(isError, error?.message)
 
-    return {company: data}
+    return {company: data, isLoading}
 }

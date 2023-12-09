@@ -3,13 +3,14 @@ import styles from './CreateCompany.module.scss'
 import FormInput from '@/components/ui/form-input/form-input'
 import FileInput from '@/components/ui/file-input/FileInput'
 import Button from '@/components/ui/button/Button'
+import { fileValidate } from '@/utils/fileValidate'
 
 const CreateCompany = () => {
 
     const {formRegister, handleSubmit, onSubmit, errors, isValid} = useCompanyForm()
 
     return (
-        <div className={styles.authContaner}>
+        <div className={styles.companyContaner}>
             <h1>СОЗДАНИЕ КОМПАНИИ</h1>
                 <form className={styles.formWrapper} onSubmit={handleSubmit(onSubmit)}>
                     <FormInput error={errors.name?.message} {...formRegister('name', {required: 'Введите название компании!'})} inputName='name' 
@@ -18,15 +19,8 @@ const CreateCompany = () => {
                     placeholder='Введите описание компании...' type='text'/>
                     <FileInput {...formRegister('image', {
                         required: 'Выберите изображения товара!',
-                        validate: (value) => {
-                           const types = ["image/jpg", "image/jpeg"] 
-                           for (let i = 0; i < value.length; i++){
-                            if (!types.includes(value[i].type)) {
-                                return 'Необходимые формат только jpg!'
-                            }
-                           }
-                           return true;
-                    }})} errors={errors.image?.message} mult={false} inputName='image'/>
+                        validate: (value) => fileValidate(value)
+                        })} errors={errors.image?.message} mult={false} inputName='image'/>
                     <Button classVar='black' disabled={isValid} type='submit' text='СОЗДАТЬ'/>
                 </form>
         </div>

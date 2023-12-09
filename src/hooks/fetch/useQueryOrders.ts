@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useError } from "../useStatus"
 
 export const useQueryOrders = () => {
-    const {data, error, isError} = useQuery({
+    const {data, error, isError, isLoading} = useQuery({
         queryKey: ['get orders'],
         queryFn: () => OrderService.get(),
         select: ({data}) => data
@@ -11,5 +11,5 @@ export const useQueryOrders = () => {
 
     useError(isError, error?.message)
 
-    return {orders: data}
+    return {orders: data, isLoading}
 }

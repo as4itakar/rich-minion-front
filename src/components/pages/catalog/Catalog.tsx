@@ -9,7 +9,7 @@ const Catalog = () => {
     
     const {search, sort, page} = useParams()
 
-    const {data} = useAllProducts({
+    const {data, isLoading} = useAllProducts({
         searchTerm: search,
         sort: sort as EnumProductSort,
         page,
@@ -20,8 +20,7 @@ const Catalog = () => {
         <>
             <Sort pages={data ? data?.length : 1}/>
             {
-                data?.products && data.products.length > 0 &&
-                <Products products={data.products}/>
+                <Products isLoading={isLoading} products={data?.products}/>
             }
         </>
     )

@@ -6,7 +6,7 @@ import { errorToast } from "@/utils/toasterActions";
 
 export const useProfile = () => {
 
-    const { data, refetch, isError, error } = useQuery({
+    const { data, refetch, isError, error, isLoading } = useQuery({
         queryKey: ['get profile'],
         queryFn: () => ProfileService.get(),
         select: ({data}) => data
@@ -29,5 +29,5 @@ export const useProfile = () => {
         mutateAsync(profileData)
     }
     
-    return {profile: data, updateProfile}
+    return {profile: data, updateProfile, isLoading}
 }

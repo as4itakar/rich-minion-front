@@ -7,10 +7,11 @@ import { FC } from 'react'
 import ImageController from '../image-controller/ImageController'
 
 interface ICompanyProduct{
-    product: IProduct
+    product: IProduct,
+    deleteProduct: (id: string | number) => void
 }
 
-const CompanyProduct: FC<ICompanyProduct> = ({product}) => {
+const CompanyProduct: FC<ICompanyProduct> = ({product, deleteProduct}) => {
     return (
         <div className={styles.productContainer}>
             <div className={styles.imageContainer}>
@@ -25,7 +26,7 @@ const CompanyProduct: FC<ICompanyProduct> = ({product}) => {
                 <Link href={'/profile/company/update-product/'+product.id}>
                     <FaPencil className={styles.icon} size={25}/>
                 </Link>
-                <RxCross2 className={styles.icon} size={25}/>
+                <RxCross2 onClick={() => deleteProduct(product.id)} className={styles.icon} size={25}/>
             </div>
         </div>
     )

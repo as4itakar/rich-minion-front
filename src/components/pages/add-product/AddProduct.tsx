@@ -5,6 +5,7 @@ import FormInput from '@/components/ui/form-input/form-input'
 import FileInput from '@/components/ui/file-input/FileInput'
 import FormSelect from '@/components/ui/form-select/FormSelect'
 import Button from '@/components/ui/button/Button'
+import { fileValidate } from '@/utils/fileValidate'
 
 const AddProduct = () => {
 
@@ -24,15 +25,7 @@ const AddProduct = () => {
                     {...formRegister('description')}/>
                     <FileInput errors={errors.images?.message} mult={true} inputName='images' {...formRegister('images', {
                         required: 'Выберите изображения товара!',
-                        validate: (value) => {
-                           const types = ["image/jpg", "image/jpeg"] 
-                           for (let i = 0; i < value.length; i++){
-                            if (!types.includes(value[i].type)) {
-                                return 'Необходимые формат только jpg!'
-                            }
-                           }
-                           return true;
-                        }
+                        validate: (value) => fileValidate(value)
                     })}/>
                     {
                         categories && categories.length > 0 &&

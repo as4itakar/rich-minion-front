@@ -6,10 +6,11 @@ import ProfileInfo from '@/components/ui/profile-info/ProfileInfo'
 import ProfileFavorites from '@/components/ui/profile-favorites/ProfileFavorites'
 import ProfileReadyCompany from '@/components/ui/profile-ready-company/ProfileReadyCompany';
 import ProfileCreateCompany from '@/components/ui/profile-create-company/ProfileCreateCompany';
+import ErrorContainer from '@/components/ui/error-container/ErrorContainer';
 
 const Profile = () => {
 
-    const {profile, updateProfile} = useProfile()
+    const {profile, updateProfile, isLoading} = useProfile()
 
     const {user} = useAuth()
 
@@ -35,9 +36,13 @@ const Profile = () => {
         )
     }
 
-    return (<div className={styles.errorContainer}>
-        <h1>Профиля не существует. Попробуйте авторизироваться...</h1>
-    </div>)
+    return (
+            isLoading 
+            ?
+            <ErrorContainer text='Загрузка'/>
+            :
+            <ErrorContainer text='Профиля не существует'/>
+    )
 }
 
 export default Profile

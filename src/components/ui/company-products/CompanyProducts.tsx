@@ -9,6 +9,7 @@ import { useParams } from '@/hooks/useParams'
 import { useCompanyProducts } from '@/hooks/fetch/useCompanyProducts'
 import { ICompany } from '@/models/company.interface'
 import { EnumProductSort } from '@/models/enums/ProductSort'
+import ErrorContainer from '../error-container/ErrorContainer'
 
 interface ICompanyProducts{
     company: ICompany
@@ -18,7 +19,7 @@ const CompanyProducts: FC<ICompanyProducts> = ({company}) => {
 
     const {search, sort, page} = useParams()
 
-    const {data} = useCompanyProducts({
+    const {data, deleteProduct, isLoading} = useCompanyProducts({
         searchTerm: search,
         sort: sort as EnumProductSort,
         page,
@@ -37,13 +38,15 @@ const CompanyProducts: FC<ICompanyProducts> = ({company}) => {
                     ?
                 <div className={styles.productsContainer}>
                     {
-                        data.products.map( product => <CompanyProduct key={product.id} product={product}/>)
+                        data.products.map( product => <CompanyProduct key={product.id} deleteProduct={deleteProduct} product={product}/>)
                     }
                 </div>
                     :
-                <div className={styles.errorContainer}>
-                    <h1>Продукты отсутствуют...</h1>
-                </div>
+                isLoading 
+                ?
+                <ErrorContainer text="Загрузка..."/>
+                :
+                <ErrorContainer text="Продуктов не найдено..."/> 
             }
         </>
     )

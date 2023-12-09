@@ -17,11 +17,11 @@ export const userSlice = createSlice({
         builder
             .addCase(register.pending, (state, {payload}) => {
             state.isLoading = true
+            state.isError = false
         })
             .addCase(register.fulfilled, (state, {payload}) => {
             state.isLoading = false
             state.user = payload.user
-            state.isError = false
         })
             .addCase(register.rejected, (state, {payload}) => {
             state.isLoading = false
@@ -30,11 +30,11 @@ export const userSlice = createSlice({
         })
             .addCase(login.pending, (state, {payload}) => {
             state.isLoading = true
+            state.isError = false
         })
             .addCase(login.fulfilled, (state, {payload}) => {
             state.isLoading = false
             state.user = payload.user
-            state.isError = false
         })
             .addCase(login.rejected, (state, {payload}) => {
             state.isLoading = false

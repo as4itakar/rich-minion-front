@@ -1,32 +1,47 @@
 import { instance } from "@/api/api.interceptor";
-import { ICategoryData } from "@/services/category/category-data.interface";
 import { ICategory } from "@/models/category.interface";
+import { errorToast, successToast } from "@/utils/toasterActions";
+import { errorCatch } from "@/api/api.helper";
+import { pathGeneration } from "@/utils/pathCreator";
+import { FetchMethods } from "@/models/enums/FetchMethods";
 
 export class CategoryService{
 
+    private static path = pathGeneration('/category/')
+
     static async getAll(){
-       return instance.get<ICategory[]>(
-            '/category'
-        )
+       return instance<ICategory[]>({
+            method: FetchMethods.GET,
+            url: this.path()
+       })
     }
 
     static async getById(id: string | number){
-        return instance.get<ICategory>(
-            '/category/' + id
-         )
+        return instance<ICategory>({
+           method: FetchMethods.GET,
+           url: this.path(id)
+        })
     }
 
-    static async create(data: ICategoryData){
-        return instance.post<ICategory>(
-            '/category',
-            {...data}
-        )
+    static async create(data: FormData){
+       try {
+            instance<ICategory>({
+                url: this.path(),
+                method: FetchMethods.POST,
+                headers: { "Content-Type": "multipart/form-data" },
+                data
+            })
+
+            successToast('Категория успешно создана!')
+       }catch (error) {
+            errorToast(errorCatch(error))
+       }
     }
 
-    static async update(id: number | string, data: ICategoryData){
-        return instance.put<ICategory>(
-            '/category/' + id,
-            {...data}
-        )
+    static async delete(id: string | number){
+        return instance({
+            method: FetchMethods.DELETE,
+            url: this.path(id)
+        })
     }
 }

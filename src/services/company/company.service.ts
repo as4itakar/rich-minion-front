@@ -2,26 +2,32 @@ import { instance } from "@/api/api.interceptor"
 import { ICompany } from "@/models/company.interface"
 import { errorCatch } from "@/api/api.helper"
 import { errorToast, successToast } from "@/utils/toasterActions"
+import { pathGeneration } from "@/utils/pathCreator"
+import { FetchMethods } from "@/models/enums/FetchMethods"
 
 export class CompanyService{
 
+    private static path = pathGeneration('/company/')
+
     static getOne(){
-       return instance.get<ICompany>(
-            '/company'
-        )
+       return instance<ICompany>({
+            method: FetchMethods.GET,
+            url: this.path()
+       })
     }
 
     static getAll(){
-        return instance.get<ICompany[]>(
-             '/company/all'
-         )
+        return instance<ICompany[]>({
+            method: FetchMethods.GET,
+            url: this.path('all')
+        })
      }
 
     static async create(data: FormData){
         try{
             await instance<ICompany>({
-                method:'post',
-                url: '/company',
+                method:FetchMethods.POST,
+                url: this.path(),
                 headers: { "Content-Type": "multipart/form-data" },
                 data
             })
@@ -33,15 +39,17 @@ export class CompanyService{
     }
 
     static update(data: any){
-        return instance.put<ICompany>(
-            '/company',
-            {...data},
-        )
+        return instance<ICompany>({
+            method: FetchMethods.PUT,
+            url: this.path(),
+            data,
+        })
     }
 
     static getById(id: string | number){
-        return instance.get<ICompany>(
-             '/company/one/' + id
-         )
+        return instance<ICompany>({
+            method: FetchMethods.GET,
+            url: this.path('one/' + id)
+        })
      }
 }

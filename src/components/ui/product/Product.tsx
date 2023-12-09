@@ -12,7 +12,7 @@ const Product: FC<IProductUI> = ({product}) => {
     
     return (
         <article className={styles.productContainer}>
-            <ImageController customAlt={product.images[0]} customImage={product.name}
+            <ImageController customAlt={product.name} customImage={product.images[0]}
              defImage='unknown-profile.jpg' defAlt='unknown'/>
             <div className={styles.descriptionContainer}>
                 <h5 className={styles.description}>{product?.name}</h5>

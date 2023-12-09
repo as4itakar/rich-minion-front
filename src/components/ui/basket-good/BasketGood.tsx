@@ -5,6 +5,7 @@ import { FC } from 'react'
 import { useActions } from '@/hooks/redux/useActions';
 import Counter from '@/components/ui/counter/Counter';
 import ImageController from '../image-controller/ImageController';
+import { currencyFormat } from '@/utils/currencyFormat';
 
 interface IBasketGood{
     item: ICartItem
@@ -35,7 +36,7 @@ const BasketGood:FC<IBasketGood> = ({item}) => {
                 <p className={styles.brandInfo}>pLhad</p>
             </div>
             <div className={styles.costContainer}>
-                <h1>{item.product.price} руб.</h1>
+                <h1>{currencyFormat(item.price)}</h1>
                 <Counter change={change} counter={item.quantity}/>
                 <MdOutlineDelete size={25} onClick={remove} className={styles.icon} />
             </div>

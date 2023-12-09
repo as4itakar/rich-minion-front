@@ -5,6 +5,7 @@ import { FC } from 'react'
 import FormInput from '@/components/ui/form-input/form-input'
 import FileInput from '@/components/ui/file-input/FileInput'
 import Button from '@/components/ui/button/Button'
+import { fileValidate } from '@/utils/fileValidate'
 
 const UpdateProduct: FC<{product: IProduct}> = ({product}) => {
 
@@ -22,15 +23,7 @@ const UpdateProduct: FC<{product: IProduct}> = ({product}) => {
                     {...formRegister('description')}/>
                     <FileInput errors={errors.images?.message} mult={true} inputName='images' {...formRegister('images', {
                         required: 'Выберите изображения товара!',
-                        validate: (value) => {
-                           const types = ["image/jpg", "image/jpeg"] 
-                           for (let i = 0; i < value.length; i++){
-                            if (!types.includes(value[i].type)) {
-                                return 'Необходимые формат только jpg!'
-                            }
-                           }
-                           return true;
-                        }
+                        validate: (value) => fileValidate(value)
                     })}/>
                     <Button classVar={'black'} disabled={isValid} type='submit' text='ОБНОВИТЬ'/>
                 </form>

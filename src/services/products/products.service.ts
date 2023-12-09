@@ -3,50 +3,49 @@ import { IGetAllProductData } from "@/services/products/products-filter-data.int
 import { IProduct, IStaticProducts } from "@/models/product.interface"
 import { errorToast, successToast } from "@/utils/toasterActions"
 import { errorCatch } from "@/api/api.helper"
+import { pathGeneration } from "@/utils/pathCreator"
+import { FetchMethods } from "@/models/enums/FetchMethods"
 
 export class ProductsService{
 
+    private static path = pathGeneration('/products/')
+
     static async getAll(queryData = {} as IGetAllProductData){
        return instance<IStaticProducts>({
-            url: '/products',
-            method: 'GET',
+            url: this.path(),
+            method: FetchMethods.GET,
             params: queryData
         })
     }
 
     static async getById(id: string | number){
-        return instance.get<IProduct>(
-            '/products/one/' + id,
-         )
+        return instance<IProduct>({
+            method: FetchMethods.GET,
+            url: this.path('one/' + id)
+        })
     }
 
     static async getByCategory(queryData = {} as IGetAllProductData,categoryId: string | number){
         return instance<IStaticProducts>({
-            url: '/products/category/'+categoryId,
-            method: 'GET',
+            url:  this.path('category/' + categoryId),
+            method: FetchMethods.GET,
             params: queryData
     })
     }
 
     static async getByCompany(queryData = {} as IGetAllProductData,companyId: string | number){
         return instance<IStaticProducts>({
-            url: '/products/company/'+companyId,
-            method: 'GET',
+            url:  this.path('company/' + companyId),
+            method: FetchMethods.GET,
             params: queryData
         })
-    }
-
-    static async getSimular(id: string | number){
-        return instance.post<IProduct>(
-            '/products/'+id,
-        )
     }
 
     static async create(data: FormData){
         try {
             await instance<{message: string}>({
-                method: 'post',
-                url:'/products',
+                method: FetchMethods.POST,
+                url: this.path(),
                 headers: { "Content-Type": "multipart/form-data" },
                 data
             })
@@ -60,8 +59,8 @@ export class ProductsService{
     static async update(id: number | string, data: FormData){
         try {
             await instance<{message: string}>({
-                method: 'put',
-                url: '/products/' + id,
+                method: FetchMethods.PUT,
+                url: this.path(id),
                 headers: { "Content-Type": "multipart/form-data" },
                 data
             })
@@ -73,8 +72,16 @@ export class ProductsService{
     }
 
     static async getRandom(){
-        return instance.get<IProduct[]>(
-            '/products/random',
-        )
+        return instance<IProduct[]>({
+            method: FetchMethods.GET,
+            url: this.path('random'),
+        })
+    }
+
+    static async delete(id: string | number){
+        return instance({
+            method: FetchMethods.DELETE,
+            url: this.path(id)
+        })
     }
 }

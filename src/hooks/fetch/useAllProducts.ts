@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useError } from "../useStatus"
 
 export const useAllProducts = (dto: IGetAllProductData) => {
-    const { data, error, isError } = useQuery({
+    const { data, error, isError, isLoading } = useQuery({
         queryKey: ['get all products', dto.searchTerm, dto.sort, dto.page, dto.perPage],
         queryFn: () => ProductsService.getAll(dto),
         select: ({data}) => data,
@@ -12,5 +12,5 @@ export const useAllProducts = (dto: IGetAllProductData) => {
 
     useError(isError, error?.message)
 
-    return {data}
+    return {data, isLoading}
 }

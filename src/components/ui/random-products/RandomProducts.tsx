@@ -6,14 +6,13 @@ import Link from 'next/link'
 
 const RandomProducts = () => {
 
-    const {products} = useRandomProducts()    
+    const {products, isLoading} = useRandomProducts()    
 
+    
     return (
+ 
         <div className={styles.randomContainer}>
-            {
-                products && products.length > 0 &&
-                <Products products={products}/>
-            }
+            <Products isLoading={isLoading} products={products}/>
             <div className={styles.buttonContainer}>
                 <Link href='/products'>
                     <Button text="ЕЩЕ" classVar='black'/>
@@ -21,6 +20,7 @@ const RandomProducts = () => {
             </div>
         </div>
     )
+
 }
 
 export default RandomProducts
