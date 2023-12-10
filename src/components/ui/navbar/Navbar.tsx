@@ -2,7 +2,6 @@ import { IUserState } from '@/store/user/user.intereface'
 import styles from './Navbar.module.scss'
 import Link from 'next/link'
 import { FC } from 'react'
-import Button from '../button/Button'
 
 interface INavbar{
     user: IUserState | null

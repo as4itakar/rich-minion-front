@@ -29,9 +29,20 @@ const CompanyProducts: FC<ICompanyProducts> = ({company}) => {
     return (
         <>
             <Sort pages={data?.length ? data.length: 1}/>
-            <Link href={'/profile/company/add-product'}>
-                <Button Icon={LuPlus} size={25} classVar={'green'}/>
-            </Link>
+            <div className={styles.linkContainer}>
+                <div className={styles.categoryContainer}>
+                    <Link href={'/profile/company/add-product'}>
+                        <Link href={'/categories'}>
+                            <h3>Категории</h3>
+                        </Link>
+                    </Link>
+                </div>
+                <div className={styles.addProductContainer}>
+                    <Link href={'/profile/company/add-product'}>
+                        <Button Icon={LuPlus} size={25} classVar={'green'}/>
+                    </Link>
+                </div>
+            </div>
             
             {
                 data?.products && data.products.length > 0
