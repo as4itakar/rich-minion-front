@@ -1,26 +1,24 @@
 import { instance } from "@/api/api.interceptor"
 import { IUser } from "@/models/user.interface"
-import { pathGeneration } from "@/utils/pathCreator"
+import { Paths } from "@/utils/Paths"
 
 export class UsersService{
 
-    private static path = pathGeneration('/users/')
-
     static async addRole(userId: string | number, data: {value: string}){
        return instance.patch<IUser>(
-            this.path('addRole/' + userId)
+            Paths.userPaths('addRole/' + userId)
         )
     }
 
     static async getAll(){
         return instance.get<IUser[]>(
-            this.path(),
+            Paths.userPaths(),
         )
     }
 
     static async getById(userId: string | number){
         return instance.get<IUser>(
-            this.path(userId)
+            Paths.userPaths(userId)
         )
     }
 }

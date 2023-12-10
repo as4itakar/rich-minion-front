@@ -2,24 +2,22 @@ import { instance } from "@/api/api.interceptor"
 import { ICompany } from "@/models/company.interface"
 import { errorCatch } from "@/api/api.helper"
 import { errorToast, successToast } from "@/utils/toasterActions"
-import { pathGeneration } from "@/utils/pathCreator"
 import { FetchMethods } from "@/models/enums/FetchMethods"
+import { Paths } from "@/utils/Paths"
 
 export class CompanyService{
-
-    private static path = pathGeneration('/company/')
 
     static getOne(){
        return instance<ICompany>({
             method: FetchMethods.GET,
-            url: this.path()
+            url: Paths.companyPaths()
        })
     }
 
     static getAll(){
         return instance<ICompany[]>({
             method: FetchMethods.GET,
-            url: this.path('all')
+            url: Paths.companyPaths('all')
         })
      }
 
@@ -27,7 +25,7 @@ export class CompanyService{
         try{
             await instance<ICompany>({
                 method:FetchMethods.POST,
-                url: this.path(),
+                url: Paths.companyPaths(),
                 headers: { "Content-Type": "multipart/form-data" },
                 data
             })
@@ -41,7 +39,7 @@ export class CompanyService{
     static update(data: any){
         return instance<ICompany>({
             method: FetchMethods.PUT,
-            url: this.path(),
+            url: Paths.companyPaths(),
             data,
         })
     }
@@ -49,7 +47,7 @@ export class CompanyService{
     static getById(id: string | number){
         return instance<ICompany>({
             method: FetchMethods.GET,
-            url: this.path('one/' + id)
+            url: Paths.companyPaths('one/' + id)
         })
      }
 }

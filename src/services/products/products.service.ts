@@ -3,16 +3,14 @@ import { IGetAllProductData } from "@/services/products/products-filter-data.int
 import { IProduct, IStaticProducts } from "@/models/product.interface"
 import { errorToast, successToast } from "@/utils/toasterActions"
 import { errorCatch } from "@/api/api.helper"
-import { pathGeneration } from "@/utils/pathCreator"
 import { FetchMethods } from "@/models/enums/FetchMethods"
+import { Paths } from "@/utils/Paths"
 
 export class ProductsService{
 
-    private static path = pathGeneration('/products/')
-
     static async getAll(queryData = {} as IGetAllProductData){
        return instance<IStaticProducts>({
-            url: this.path(),
+            url: Paths.productsPaths(),
             method: FetchMethods.GET,
             params: queryData
         })
@@ -21,13 +19,13 @@ export class ProductsService{
     static async getById(id: string | number){
         return instance<IProduct>({
             method: FetchMethods.GET,
-            url: this.path('one/' + id)
+            url: Paths.productsPaths('one/' + id)
         })
     }
 
     static async getByCategory(queryData = {} as IGetAllProductData,categoryId: string | number){
         return instance<IStaticProducts>({
-            url:  this.path('category/' + categoryId),
+            url:  Paths.productsPaths('category/' + categoryId),
             method: FetchMethods.GET,
             params: queryData
     })
@@ -35,7 +33,7 @@ export class ProductsService{
 
     static async getByCompany(queryData = {} as IGetAllProductData,companyId: string | number){
         return instance<IStaticProducts>({
-            url:  this.path('company/' + companyId),
+            url:  Paths.productsPaths('company/' + companyId),
             method: FetchMethods.GET,
             params: queryData
         })
@@ -45,7 +43,7 @@ export class ProductsService{
         try {
             await instance<{message: string}>({
                 method: FetchMethods.POST,
-                url: this.path(),
+                url: Paths.productsPaths(),
                 headers: { "Content-Type": "multipart/form-data" },
                 data
             })
@@ -60,7 +58,7 @@ export class ProductsService{
         try {
             await instance<{message: string}>({
                 method: FetchMethods.PUT,
-                url: this.path(id),
+                url: Paths.productsPaths(id),
                 headers: { "Content-Type": "multipart/form-data" },
                 data
             })
@@ -74,14 +72,14 @@ export class ProductsService{
     static async getRandom(){
         return instance<IProduct[]>({
             method: FetchMethods.GET,
-            url: this.path('random'),
+            url: Paths.productsPaths('random'),
         })
     }
 
     static async delete(id: string | number){
         return instance({
             method: FetchMethods.DELETE,
-            url: this.path(id)
+            url: Paths.productsPaths(id)
         })
     }
 }
