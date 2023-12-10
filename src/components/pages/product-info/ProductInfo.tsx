@@ -8,12 +8,12 @@ import ProductReviews from '@/components/ui/product-reviews/ProductReviews';
 
 const ProductInfo: FC<{product: IProduct}> = ({product}) => {
 
-    const {reviews, rating, mutateAsync} = useReview(product.id)
+    const {reviews, rating, mutateAsync, isLoading} = useReview(product.id)
 
     return (
         <div className={styles.productInfo}>
             <ProductPanel product={product} rating={rating}/>
-            <ProductReviews mutateAsync={mutateAsync} reviews={reviews} id={product.id}/>
+            <ProductReviews isLoading={isLoading} mutateAsync={mutateAsync} reviews={reviews} id={product.id}/>
         </div>
     )
 }

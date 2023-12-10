@@ -8,10 +8,11 @@ import { useAuth } from '@/hooks/redux/useAuth'
 interface IProductReviews{
     id: number
     mutateAsync: (data: {rating: number, text: string, productId: number}) => void
-    reviews?: IReview[]
+    reviews?: IReview[],
+    isLoading: boolean
 }
 
-const ProductReviews: FC<IProductReviews> = ({id, mutateAsync, reviews}) => {
+const ProductReviews: FC<IProductReviews> = ({id, mutateAsync, reviews, isLoading}) => {
 
     const {user} = useAuth()
 
@@ -20,7 +21,7 @@ const ProductReviews: FC<IProductReviews> = ({id, mutateAsync, reviews}) => {
             {
                 user && <CreateReview id={id} mutateAsync={mutateAsync}/>
             }
-            <Reviews reviews={reviews}/>
+            <Reviews reviews={reviews} isLoading={isLoading}/>
         </div>
     )
 }

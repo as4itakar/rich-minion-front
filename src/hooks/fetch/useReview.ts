@@ -5,7 +5,7 @@ import { useError } from "../useStatus"
 
 export const useReview = (productId: number) => {
   
-    const {data, refetch, error, isError} = useQuery({
+    const {data, refetch, error, isError, isLoading} = useQuery({
         queryKey: ['get reviews'],
         queryFn: () => ReviewService.getByProductId(productId),
         select: ({data}) => data,
@@ -25,5 +25,5 @@ export const useReview = (productId: number) => {
 
     useError(isError, error?.message)
 
-    return {reviews: data?.reviews, rating: data?.rate._avg.rating, mutateAsync}
+    return {reviews: data?.reviews, rating: data?.rate._avg.rating, mutateAsync, isLoading}
 }
